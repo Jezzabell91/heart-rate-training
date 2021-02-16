@@ -1,0 +1,31 @@
+html, body {
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Roboto';
+    background-color: rgb(2, 240, 240);
+}
+
+
+#parent {
+    height: 100vh;
+    display: grid;
+    align-items: center;
+}
+
+#child {
+    display: grid;
+    place-items: center;
+}
+
+#heartbeat {
+    font-size: 56px;
+}
+
+
+.hide {
+    display: none;
+}
+
+.connected {
+    background-color: lightgreen;
+}
