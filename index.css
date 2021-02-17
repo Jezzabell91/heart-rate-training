@@ -1,7 +1,7 @@
 html, body {
     padding: 0px;
     margin: 0px;
-    font-family: 'Roboto';
+    font-family: 'Lato';
     background-color: rgb(2, 240, 240);
 }
 
@@ -18,14 +18,57 @@ html, body {
 }
 
 #heartbeat {
-    font-size: 56px;
+    font-family: 'Lato';
+    font-size: 98px;
+    color: whitesmoke;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
+.pulse {
+    opacity: 93%;
+}
 
 .hide {
     display: none;
 }
 
 .connected {
-    background-color: lightgreen;
+    background-color: rgb(177, 252, 177);
+}
+
+.stopwatch {
+    margin-top: 0;
+    font-family: 'Lato';
+    font-size: 68px;
+    color: rgba(17, 24, 39, 1);
+}
+
+
+/* Tailwind equivalent = px-6 py-2  transition ease-in duration-200 uppercase rounded-full hover:bg-gray-800 hover:text-white border-2 border-gray-900 focus:outline-none */
+.btn {
+    font-family: 'Lato';
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    text-transform: uppercase;
+    border-radius: 9999px;
+    border-width: 2px;
+    border-color: rgba(17, 24, 39, 1);
+    transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+    transition-timing-function: ease-in;
+    transition-duration: 200ms;
+}
+
+.btn:hover{
+    background-color: rgba(31, 41, 55, 1);
+    color: white;
+}
+
+.btn:focus{
+    outline: 2px solid transparent;
+    outline-offset: 2px;
 }

@@ -2,6 +2,7 @@
 
 let output = document.getElementById('stopwatch')
 
+
 let ms = 0
 let sec = 0
 let min = 0
@@ -12,6 +13,7 @@ const timer = () => {
     if(ms >= 100){
         sec++
         ms = 0
+
     }
     if(sec === 60){
         min++

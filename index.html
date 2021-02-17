@@ -17,23 +17,32 @@
 
     <div id="parent">
         <div id="child">
-        <div id="heartbeat">
-
-            <button id='connect'>Connect</button>
+            
+            <div class="container">
+                <img src="/images/icons/heart_370.png" alt="Picture of a heart" id="heart">
+                <div id="heartbeat">
+                <!-- heartbeat goes here -->
+                </div>
+            </div>
+            <p class="stopwatch" id="stopwatch">
+                <!-- stopwatch goes here -->
+                00:00:00
+            </p>
+            <span>
+                <button class="btn-start btn" id="startBtn">Start Timer</button>
+                <button class="btn-stop btn hide" id="stopBtn">Stop</button>
+                <button class="btn-reset btn hide" id="resetBtn">Reset</button>
+            </span>
+        </br>
+        
+            <button id='connectBtn' class="btn">Connect to HR Monitor</button>
+            <button id='disconnectBtn' class="btn hide">Disconnect</button>
+            
         </div>
-        <p class="stopwatch" id="stopwatch">
-            <!-- stopwatch goes here -->
-        </p>
-        <span>
-            <button class="btn-start" id="startBtn">Start</button>
-            <button class="btn-stop hide" id="stopBtn">Stop</button>
-            <button class="btn-reset hide" id="resetBtn">Reset</button>
-        </span>
-
-    </div>
     </div>
     <script type="text/javascript" src="heartbeat.js"></script>
     <script type="text/javascript" src="timer.js"></script>
+    <script type="text/javascript" src="registerServiceWorker.js"></script>
 </body>
 
 </html>
