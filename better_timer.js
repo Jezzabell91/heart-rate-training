@@ -1,70 +1,76 @@
-// FROM https://www.youtube.com/watch?v=MCi6AZMkxcU&ab_channel=GoogleChromeDevelopers AND https://gist.github.com/jakearchibald/cb03f15670817001b1157e62a076fe95    
+// // FROM https://www.youtube.com/watch?v=MCi6AZMkxcU&ab_channel=GoogleChromeDevelopers AND https://gist.github.com/jakearchibald/cb03f15670817001b1157e62a076fe95    
 
-let start
+const startBtn = document.getElementById('startBtn')
+const stopBtn =  document.getElementById('stopBtn')
+const resetBtn =  document.getElementById('resetBtn')
+let output = document.getElementById('stopwatch')
+let controller = new AbortController()
+
 
 function animationInterval(ms, signal, callback) {
-
-    start ||= document.timeline.currentTime
-    // console.log('inside animationInterval')
-    console.log('start', start)
-    // console.log('signal', signal)
-
+    const start = document.timeline.currentTime
+  
     function frame(time) {
       if (signal.aborted) return
-      console.log('before callback', time)
       callback(time)
-      console.log('after callback', time)
       scheduleFrame(time)
     }
   
     function scheduleFrame(time) {
-        console.log('time, start in scheduleFrame', time, start)
       const elapsed = time - start
-      console.log('elapsed', elapsed)
       const roundedElapsed = Math.round(elapsed / ms) * ms
+      setOutput(roundedElapsed)
       const targetNext = start + roundedElapsed + ms
       const delay = targetNext - performance.now()
       setTimeout(() => requestAnimationFrame(frame), delay)
     }
   
+    
+    function setOutput(ms) {
+        output.innerHTML = new Date(ms).toISOString().slice(11, -5)
+    }
+
     scheduleFrame(start)
   }
 
 
-
-// Usage
-
-let controller = new AbortController()
-
-let output = document.getElementById('stopwatch')
-
-// Create an animation callback every second:
 const onStart = () => {
+    toggleButtons()
     controller = new AbortController()
-    console.log("onStart")
-    startBtn.classList.add("hide")
-    stopBtn.classList.remove("hide")
-    resetBtn.classList.add("hide")
+
     animationInterval(1000, controller.signal, time => {
-        console.log('inside callback')
-  console.log('tick!', time)
-})
+        console.log('tick!', time)
+      })
 }
 
-// And to stop it:
+
 const onStop = () => {
-    start = document.timeline.currentTime
-    startBtn.classList.remove("hide")
-    stopBtn.classList.add("hide")
-    resetBtn.classList.remove("hide")
+  toggleButtons()
     controller.abort()
-    console.log(controller.signal)
+    console.log("stop")
 }
 
-const startBtn = document.getElementById('startBtn')
-const stopBtn =  document.getElementById('stopBtn')
-const resetBtn = document.getElementById('resetBtn')
+const onReset = () => {
+  toggleButtons()
+  output.innerHTML = "00:00:00"
+}
 
+const toggleButtons = () => {
+    if (startBtn.classList.contains('hide') && stopBtn.classList.contains('hide')){
+      resetBtn.classList.add("hide")
+      startBtn.classList.remove("hide")
+    } else if (startBtn.classList.contains('hide') && resetBtn.classList.contains('hide')){
+      stopBtn.classList.add("hide")
+      resetBtn.classList.remove("hide")
+    } else if (stopBtn.classList.contains('hide') && resetBtn.classList.contains('hide')){
+      startBtn.classList.add("hide")
+      stopBtn.classList.remove("hide")
+    }
+}
 
 startBtn.addEventListener('click', onStart)
 stopBtn.addEventListener('click', onStop)
+resetBtn.addEventListener('click', onReset)
+
+
+
