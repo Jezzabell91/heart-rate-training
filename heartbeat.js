@@ -24,8 +24,8 @@ const connect = async props => {
     char.oncharacteristicvaluechanged = props.onChange
     char.startNotifications()
 
-    connectBtn.classList.add('hide')
-    disconnectBtn.classList.remove('hide')
+    connectBtn.classList.add('hidden')
+    disconnectBtn.classList.remove('hidden')
 
     return char
 }
@@ -69,6 +69,6 @@ disconnectBtn.addEventListener('click', () => {
     heart.classList.remove('pulse')
 
     // swap visibility of connection buttons
-    connectBtn.classList.remove('hide')
-    disconnectBtn.classList.add('hide')
+    connectBtn.classList.remove('hidden')
+    disconnectBtn.classList.add('hidden')
 })

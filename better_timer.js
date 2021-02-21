@@ -56,15 +56,15 @@ const onReset = () => {
 }
 
 const toggleButtons = () => {
-    if (startBtn.classList.contains('hide') && stopBtn.classList.contains('hide')){
-      resetBtn.classList.add("hide")
-      startBtn.classList.remove("hide")
-    } else if (startBtn.classList.contains('hide') && resetBtn.classList.contains('hide')){
-      stopBtn.classList.add("hide")
-      resetBtn.classList.remove("hide")
-    } else if (stopBtn.classList.contains('hide') && resetBtn.classList.contains('hide')){
-      startBtn.classList.add("hide")
-      stopBtn.classList.remove("hide")
+    if (startBtn.classList.contains('hidden') && stopBtn.classList.contains('hidden')){
+      resetBtn.classList.add("hidden")
+      startBtn.classList.remove("hidden")
+    } else if (startBtn.classList.contains('hidden') && resetBtn.classList.contains('hidden')){
+      stopBtn.classList.add("hidden")
+      resetBtn.classList.remove("hidden")
+    } else if (stopBtn.classList.contains('hidden') && resetBtn.classList.contains('hidden')){
+      startBtn.classList.add("hidden")
+      stopBtn.classList.remove("hidden")
     }
 }
 

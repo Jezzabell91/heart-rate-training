@@ -1,0 +1,27 @@
+{
+  "name": "heart-rate-training",
+  "version": "1.0.0",
+  "description": "",
+  "main": "better_timer.js",
+  "scripts": {
+    "dev": "vite",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jezzabell91/heart-rate-training.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jezzabell91/heart-rate-training/issues"
+  },
+  "homepage": "https://github.com/Jezzabell91/heart-rate-training#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.2.4",
+    "postcss": "^8.2.6",
+    "tailwindcss": "^2.0.3",
+    "vite": "^2.0.1"
+  }
+}

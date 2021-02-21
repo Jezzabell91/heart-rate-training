@@ -6,8 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="manifest" href="manifest.json" />
-    <meta name="theme-color" content="#db4938" />
-    <link rel="stylesheet" href="index.css">
+    <meta name="theme-color" content="#B41A00" />
+    <link rel="stylesheet" href="/css/tailwind.css">
+    <!-- <link rel="stylesheet" href="index.css"> -->
 
     <title>Heart Rate Training</title>
 
@@ -22,6 +23,7 @@
                 <img src="/images/icons/heart_370.png" alt="Picture of a heart" id="heart">
                 <div id="heartbeat">
                 <!-- heartbeat goes here -->
+                
                 </div>
             </div>
             <p class="stopwatch" id="stopwatch">
@@ -30,19 +32,19 @@
             </p>
             <span>
                 <button class="btn-start btn" id="startBtn">Start Timer</button>
-                <button class="btn-stop btn hide" id="stopBtn">Stop</button>
-                <button class="btn-reset btn hide" id="resetBtn">Reset</button>
+                <button class="btn-stop btn hidden" id="stopBtn">Stop</button>
+                <button class="btn-reset btn hidden" id="resetBtn">Reset</button>
             </span>
-        </br>
+
         
             <button id='connectBtn' class="btn">Connect to HR Monitor</button>
-            <button id='disconnectBtn' class="btn hide">Disconnect</button>
+            <button id='disconnectBtn' class="btn hidden">Disconnect</button>
             
         </div>
     </div>
     <script type="text/javascript" src="heartbeat.js"></script>
     <script type="text/javascript" src="better_timer.js"></script>
-    <script type="text/javascript" src="registerServiceWorker.js"></script>
+    <!-- <script type="text/javascript" src="registerServiceWorker.js"></script> -->
 </body>
 
 </html>
