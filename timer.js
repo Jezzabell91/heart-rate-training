@@ -46,18 +46,18 @@ const timer = () => {
 // Every 10ms run timer function 
 const start = () => {
     time = setInterval(timer,10)
-    startBtn.classList.add("hide")
-    stopBtn.classList.remove("hide")
-    resetBtn.classList.add("hide")
+    startBtn.classList.add("hidden")
+    stopBtn.classList.remove("hidden")
+    resetBtn.classList.add("hidden")
 }
 
 
 //stop timer
 const stop = () => {
     clearInterval(time)
-    startBtn.classList.remove("hide")
-    stopBtn.classList.add("hide")
-    resetBtn.classList.remove("hide")
+    startBtn.classList.remove("hidden")
+    stopBtn.classList.add("hidden")
+    resetBtn.classList.remove("hidden")
 }
 
 //reset timer
@@ -69,7 +69,7 @@ const reset = () => {
 
     output.innerHTML = `00:00:00`
     // output.innerHTML = `00:00`
-    resetBtn.classList.add("hide")
+    resetBtn.classList.add("hidden")
 }
 
 

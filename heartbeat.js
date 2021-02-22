@@ -7,8 +7,20 @@ let device
 // html elements
 const heartbeat = document.getElementById('heartbeat')
 const heart = document.getElementById('heart')
+// const heart_dark = document.getElementById('heart_dark')
 const connectBtn = document.getElementById('connectBtn')
 const disconnectBtn = document.getElementById('disconnectBtn')
+
+
+const low_bound = document.getElementById('low_bound')
+const high_bound = document.getElementById('high_bound')
+// Set Target Zone Boundaries
+const LOW = 115
+const HIGH = 145
+
+low_bound.innerHTML = LOW 
+high_bound.innerHTML = HIGH
+
 
 // Method to connect to bluetooth device 
 const connect = async props => {
@@ -24,8 +36,8 @@ const connect = async props => {
     char.oncharacteristicvaluechanged = props.onChange
     char.startNotifications()
 
-    connectBtn.classList.add('hide')
-    disconnectBtn.classList.remove('hide')
+    connectBtn.classList.add('hidden')
+    disconnectBtn.classList.remove('hidden')
 
     return char
 }
@@ -40,18 +52,16 @@ connectBtn.addEventListener('click', () => {
             const val = e.target.value.getInt8(1)
             heartbeat.innerText = val ? val : ''
 
-            // pulse the heart image when heartbeat changes 
-            if (heart.classList.contains('pulse')){
-                heart.classList.remove('pulse')
-            } else {
-                heart.classList.add('pulse')
-            }
+            heart.classList.toggle('text-red-600')
+            heart.classList.toggle('text-red-700')
+
             console.log(val)
 
         }
     }).then(() => {
             console.log('Device connected')
-            document.body.classList.add('connected')
+            document.body.classList.remove('bg-blue-100')
+            document.body.classList.add('bg-green-100')
         })
 })
 
@@ -59,6 +69,8 @@ connectBtn.addEventListener('click', () => {
 // Disconnect from heart rate monitor
 disconnectBtn.addEventListener('click', () => {
 
+    // heart_dark.classList.add('hidden')
+    // heart.classList.remove('hidden')
     console.log('Disconnecting from bluetooth device')
     device.gatt.disconnect()
     console.log('Device disconnected')
@@ -66,9 +78,9 @@ disconnectBtn.addEventListener('click', () => {
     // Reset heart beat
     heartbeat.innerText = ''
     document.body.classList.remove('connected')
-    heart.classList.remove('pulse')
+    heart.classList.remove('hidden')
 
     // swap visibility of connection buttons
-    connectBtn.classList.remove('hide')
-    disconnectBtn.classList.add('hide')
+    connectBtn.classList.remove('hidden')
+    disconnectBtn.classList.add('hidden')
 })

@@ -27,7 +27,12 @@ function animationInterval(ms, signal, callback) {
   
     
     function setOutput(ms) {
-        output.innerHTML = new Date(ms).toISOString().slice(11, -5)
+        timer = new Date(ms).toISOString().slice(11, -5)
+        if (timer.charAt(0) == 0 && timer.charAt(1) == 0){
+        output.innerHTML = timer.slice(3)
+        } else {
+          output.innerHTML = timer
+        }
     }
 
     scheduleFrame(start)
@@ -56,15 +61,15 @@ const onReset = () => {
 }
 
 const toggleButtons = () => {
-    if (startBtn.classList.contains('hide') && stopBtn.classList.contains('hide')){
-      resetBtn.classList.add("hide")
-      startBtn.classList.remove("hide")
-    } else if (startBtn.classList.contains('hide') && resetBtn.classList.contains('hide')){
-      stopBtn.classList.add("hide")
-      resetBtn.classList.remove("hide")
-    } else if (stopBtn.classList.contains('hide') && resetBtn.classList.contains('hide')){
-      startBtn.classList.add("hide")
-      stopBtn.classList.remove("hide")
+    if (startBtn.classList.contains('hidden') && stopBtn.classList.contains('hidden')){
+      resetBtn.classList.add("hidden")
+      startBtn.classList.remove("hidden")
+    } else if (startBtn.classList.contains('hidden') && resetBtn.classList.contains('hidden')){
+      stopBtn.classList.add("hidden")
+      resetBtn.classList.remove("hidden")
+    } else if (stopBtn.classList.contains('hidden') && resetBtn.classList.contains('hidden')){
+      startBtn.classList.add("hidden")
+      stopBtn.classList.remove("hidden")
     }
 }
 
