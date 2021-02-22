@@ -11,6 +11,17 @@ const heart = document.getElementById('heart')
 const connectBtn = document.getElementById('connectBtn')
 const disconnectBtn = document.getElementById('disconnectBtn')
 
+
+const low_bound = document.getElementById('low_bound')
+const high_bound = document.getElementById('high_bound')
+// Set Target Zone Boundaries
+const LOW = 115
+const HIGH = 145
+
+low_bound.innerHTML = LOW 
+high_bound.innerHTML = HIGH
+
+
 // Method to connect to bluetooth device 
 const connect = async props => {
     device = await navigator.bluetooth.requestDevice({
@@ -49,7 +60,8 @@ connectBtn.addEventListener('click', () => {
         }
     }).then(() => {
             console.log('Device connected')
-            document.body.classList.add('connected')
+            document.body.classList.remove('bg-blue-100')
+            document.body.classList.add('bg-green-100')
         })
 })
 
