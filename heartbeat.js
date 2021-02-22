@@ -7,6 +7,7 @@ let device
 // html elements
 const heartbeat = document.getElementById('heartbeat')
 const heart = document.getElementById('heart')
+// const heart_dark = document.getElementById('heart_dark')
 const connectBtn = document.getElementById('connectBtn')
 const disconnectBtn = document.getElementById('disconnectBtn')
 
@@ -40,12 +41,9 @@ connectBtn.addEventListener('click', () => {
             const val = e.target.value.getInt8(1)
             heartbeat.innerText = val ? val : ''
 
-            // pulse the heart image when heartbeat changes 
-            if (heart.classList.contains('pulse')){
-                heart.classList.remove('pulse')
-            } else {
-                heart.classList.add('pulse')
-            }
+            heart.classList.toggle('text-red-600')
+            heart.classList.toggle('text-red-700')
+
             console.log(val)
 
         }
@@ -59,6 +57,8 @@ connectBtn.addEventListener('click', () => {
 // Disconnect from heart rate monitor
 disconnectBtn.addEventListener('click', () => {
 
+    // heart_dark.classList.add('hidden')
+    // heart.classList.remove('hidden')
     console.log('Disconnecting from bluetooth device')
     device.gatt.disconnect()
     console.log('Device disconnected')
@@ -66,7 +66,7 @@ disconnectBtn.addEventListener('click', () => {
     // Reset heart beat
     heartbeat.innerText = ''
     document.body.classList.remove('connected')
-    heart.classList.remove('pulse')
+    heart.classList.remove('hidden')
 
     // swap visibility of connection buttons
     connectBtn.classList.remove('hidden')
