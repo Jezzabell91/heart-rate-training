@@ -9,9 +9,8 @@ let wakeLock = null
 const requestLock = async () => {
     try {
         wakeLock = await navigator.wakeLock.request('screen')
-        console.log('Screen Wake Lock')
-        wakeLock.addEventListener('release', () => console.log('Screen Wake Lock released:', wakeLock.released))
-
+        console.log('Screen Wake Lock', wakeLock)
+        wakeLock.addEventListener('release', () => console.log('Screen Wake Lock released:', wakeLock))
     } catch (err) {
         console.error(`${err.name}, ${err.message}`)
     }
@@ -21,9 +20,6 @@ const requestLock = async () => {
 const releaseLock = () => {
   if (wakeLock !== null) {
     wakeLock.release()
-      .then(() => {
-        wakeLock = null
-      })
   }
 }
 
