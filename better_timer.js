@@ -1,5 +1,29 @@
 // // FROM https://www.youtube.com/watch?v=MCi6AZMkxcU&ab_channel=GoogleChromeDevelopers AND https://gist.github.com/jakearchibald/cb03f15670817001b1157e62a076fe95    
 
+// Wake Lock https://web.dev/wake-lock/
+
+let wakeLock = null 
+
+
+// Request on timer start  
+const requestLock = async () => {
+    try {
+        wakeLock = await navigator.wakeLock.request('screen')
+        console.log('Screen Wake Lock', wakeLock)
+        wakeLock.addEventListener('release', () => console.log('Screen Wake Lock released:', wakeLock))
+    } catch (err) {
+        console.error(`${err.name}, ${err.message}`)
+    }
+}
+
+// Released on timer reset  
+const releaseLock = () => {
+  if (wakeLock !== null) {
+    wakeLock.release()
+  }
+}
+
+
 const startBtn = document.getElementById('startBtn')
 const stopBtn =  document.getElementById('stopBtn')
 const resetBtn =  document.getElementById('resetBtn')
@@ -43,6 +67,9 @@ const onStart = () => {
     toggleButtons()
     controller = new AbortController()
 
+    //Wake Lock request
+    requestLock()
+
     animationInterval(1000, controller.signal, time => {
         console.log('tick!', time)
       })
@@ -56,6 +83,8 @@ const onStop = () => {
 }
 
 const onReset = () => {
+  //Wake Lock release 
+  releaseLock()
   toggleButtons()
   output.innerHTML = "00:00:00"
 }
@@ -76,6 +105,5 @@ const toggleButtons = () => {
 startBtn.addEventListener('click', onStart)
 stopBtn.addEventListener('click', onStop)
 resetBtn.addEventListener('click', onReset)
-
 
 
